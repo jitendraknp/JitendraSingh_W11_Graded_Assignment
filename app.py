@@ -2,16 +2,21 @@
 import datetime
 
 # Third part imports
-from flask import request
+from flask import jsonify, request
 import pandas as pd
 
 from ms import app
-from ms.functions import get_model_response
-
+from ms.functions import get_model_response  
 
 model_name = "Breast Cancer Wisconsin (Diagnostic)"
 model_file = 'model_binary.dat.gz'
 version = "v1.0.0"
+ 
+@app.route('/')
+def index():
+    return jsonify({
+        "Message": "app up and running successfully"
+    })
 
 
 @app.route('/info', methods=['GET'])
