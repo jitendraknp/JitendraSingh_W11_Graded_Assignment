@@ -1,15 +1,9 @@
-FROM python:3.8-slim
-
-WORKDIR /app/
-
-COPY . /app/
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-EXPOSE 9091
-
-ENV NAME=Assignment
-
-ENTRYPOINT [ "python3" ]
-
-CMD [ "app.py" ]
+FROM python:3.10
+WORKDIR /microservice-breastcancer-prediction
+COPY requirements.txt /microservice-breastcancer-prediction
+EXPOSE 5000
+RUN pip install virtualenv
+ENV PATH="/venv/bin:$PATH"
+RUN pip install --no-cache-dir -r ./requirements.txt
+COPY . /microservice-breastcancer-prediction
+CMD ["python", "app.py"]

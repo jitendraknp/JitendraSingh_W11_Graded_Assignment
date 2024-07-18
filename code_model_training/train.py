@@ -15,7 +15,7 @@ import gzip
 
 
 # Load the dataset
-data = pd.read_csv('/home/vboxuser/Microservices/data/breast_cancer.csv')
+data = pd.read_csv('data/breast_cancer.csv')
 
 # Preprocess dataset
 data = data.set_index('id')
@@ -54,4 +54,4 @@ print(ConfusionMatrixDisplay.from_estimator(pipe, X_test, y_test))
 plt.show()
 
 # Export model
-joblib.dump(pipe, gzip.open('/home/vboxuser/Microservices/model/model_binary.dat.gz', "wb"))
+joblib.dump(pipe, gzip.open('model/model_binary.dat.gz', "wb"))
